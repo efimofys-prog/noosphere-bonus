@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бонусы за отзывы — Ноосфера Банк</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: #1a1a2e;
+            background: #f8f9fa;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: #fff;
+            padding: 16px 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #6c3ce0;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #6c3ce0, #9b59b6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .header-phone {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a2e;
+            text-decoration: none;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #6c3ce0 0%, #9b59b6 50%, #e74c8b 100%);
+            color: #fff;
+            padding: 80px 24px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(28px, 5vw, 48px);
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            display: block;
+            font-size: 0.6em;
+            font-weight: 600;
+            opacity: 0.9;
+            margin-top: 8px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: #fff;
+            color: #6c3ce0;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: #6c3ce0;
+            color: #fff;
+        }
+
+        .btn-secondary:hover {
+            background: #5a2dc5;
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        .section {
+            padding: 60px 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(24px, 4vw, 36px);
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: #1a1a2e;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 48px;
+        }
+
+        /* Steps */
+        .steps {
+            background: #fff;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 32px 24px;
+            border-radius: 16px;
+            background: #f8f9fa;
+            position: relative;
+        }
+
+        .step-number {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #6c3ce0, #9b59b6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 24px;
+            font-weight: 800;
+            margin: 0 auto 20px;
+        }
+
+        .step-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #6c3ce0;
+        }
+
+        .step-card p {
+            color: #666;
+            font-size: 15px;
+        }
+
+        .step-connector {
+            display: none;
+        }
+
+        /* Guide */
+        .guide {
+            background: #f8f9fa;
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .guide-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .guide-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .guide-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #6c3ce0, #9b59b6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .guide-card h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1a1a2e;
+        }
+
+        .guide-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* Examples */
+        .examples {
+            background: #fff;
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .example-card {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 28px;
+            border-left: 4px solid #6c3ce0;
+        }
+
+        .example-tag {
+            display: inline-block;
+            background: #6c3ce0;
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+
+        .example-meta {
+            font-size: 13px;
+            color: #999;
+            margin-bottom: 12px;
+        }
+
+        .example-card p {
+            color: #444;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .example-link {
+            color: #6c3ce0;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .example-link:hover {
+            text-decoration: underline;
+        }
+
+        /* FAQ */
+        .faq {
+            background: #f8f9fa;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: #fff;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+
+        .faq-question {
+            padding: 20px 24px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+
+        .faq-question:hover {
+            background: #f8f9fa;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 24px;
+            color: #6c3ce0;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 24px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 24px 20px;
+            max-height: 500px;
+        }
+
+        .faq-answer p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* Requirements */
+        .requirements {
+            background: #fff;
+        }
+
+        .requirements-note {
+            text-align: center;
+            background: linear-gradient(135deg, #6c3ce0, #9b59b6);
+            color: #fff;
+            padding: 16px 24px;
+            border-radius: 12px;
+            margin-bottom: 32px;
+            font-weight: 600;
+        }
+
+        .req-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .req-item {
+            text-align: center;
+            padding: 24px 16px;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+
+        .req-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .req-item h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #6c3ce0;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .req-item p {
+            color: #666;
+            font-size: 13px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a2e;
+            color: #fff;
+            padding: 40px 24px;
+            text-align: center;
+        }
+
+        .footer-badges {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.1);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .footer p {
+            color: rgba(255,255,255,0.6);
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .hero {
+                padding: 60px 20px;
+            }
+
+            .section {
+                padding: 40px 20px;
+            }
+
+            .steps-grid,
+            .guide-grid,
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <a href="#" class="logo">
+            <div class="logo-icon">Н</div>
+            Ноосфера Банк
+        </a>
+        <a href="tel:88005333603" class="header-phone">8 (800) 533-36-03</a>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-badge">🎁 500 баллов</div>
+        <h1>
+            БОНУСЫ ЗА ЗАЧТЁННЫЕ ОТЗЫВЫ
+            <span>500 баллов за каждый одобренный отзыв</span>
+        </h1>
+        <p>Мы ценим наших клиентов и дарим подарки за добрые слова</p>
+        <a href="#steps" class="btn btn-primary">Написать отзыв</a>
+    </section>
+
+    <!-- Steps -->
+    <section class="section steps" id="steps">
+        <h2 class="section-title">КАК ПОЛУЧИТЬ ПОДАРОК-ВОЗНАГРАЖДЕНИЕ?</h2>
+        <p class="section-subtitle">Три простых шага до получения бонусов</p>
+
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3>ОСТАВИТЬ ОТЗЫВ</h3>
+                <p>Напишите развёрнутый отзыв о Ноосфера Банке на странице банка</p>
+                <a href="https://www.banki.ru/banks/bank_reviews/" class="btn btn-secondary" style="margin-top: 16px; font-size: 14px; padding: 12px 24px;">Написать отзыв</a>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3>НАПРАВЬТЕ МАТЕРИАЛЫ</h3>
+                <p>Приложите скриншоты из чата, фото договора или другие подтверждающие документы</p>
+                <button class="btn btn-secondary" style="margin-top: 16px; font-size: 14px; padding: 12px 24px;">Прикрепить документы</button>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3>ЗАЧЁТ ОТЗЫВА</h3>
+                <p>Дождитесь, пока модераторы Банки.ру зачтут ваш отзыв. Обычно это занимает до 2 недель</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guide -->
+    <section class="section guide">
+        <h2 class="section-title">КАК НАПИСАТЬ ОТЗЫВ, ЧТОБЫ ПОЛУЧИТЬ БАЛЛЫ</h2>
+        <p class="section-subtitle">Следуйте этим рекомендациям для повышения шансов одобрения</p>
+
+        <div class="guide-grid">
+            <div class="guide-card">
+                <div class="guide-card-header">
+                    <div class="guide-icon">📝</div>
+                    <h3>РАССКАЖИТЕ</h3>
+                </div>
+                <p>Опишите, куда вы обратились и с каким вопросом, как банк помог решить вашу проблему. Чем ярче и эмоциональнее описана ситуация, тем выше шанс одобрения.</p>
+            </div>
+
+            <div class="guide-card">
+                <div class="guide-card-header">
+                    <div class="guide-icon">🔐</div>
+                    <h3>НАПИШИТЕ</h3>
+                </div>
+                <p>Введите свои данные в специальные поля (видны только банку). Дайте согласие на обработку данных для идентификации и начисления бонусов.</p>
+            </div>
+
+            <div class="guide-card">
+                <div class="guide-card-header">
+                    <div class="guide-icon">👀</div>
+                    <h3>ПРОВЕРЯЙТЕ</h3>
+                </div>
+                <p>Следите за комментариями к отзыву и электронной почтой. Модераторы могут запросить дополнительные детали. Проверка обычно занимает до 2 недель.</p>
+            </div>
+
+            <div class="guide-card">
+                <div class="guide-card-header">
+                    <div class="guide-icon">🏦</div>
+                    <h3>УКАЖИТЕ</h3>
+                </div>
+                <p>Перечислите все продукты банка, которыми пользовались: дебетовые/кредитные карты, мобильное приложение, удалённый сервис, вклады и т.д.</p>
+            </div>
+
+            <div class="guide-card">
+                <div class="guide-card-header">
+                    <div class="guide-icon">📞</div>
+                    <h3>ПРИМИТЕ ЗВОНОК</h3>
+                </div>
+                <p>Администраторы Банки.ру могут позвонить вам для подтверждения отзыва. Будьте на связи.</p>
+            </div>
+
+            <div class="guide-card">
+                <div class="guide-card-header">
+                    <div class="guide-icon">🕐</div>
+                    <h3>ВСПОМНИТЕ</h3>
+                </div>
+                <p>Где вы обращались: чат, офис или контактный центр. Укажите дату и время события.</p>
+            </div>
+
+            <div class="guide-card">
+                <div class="guide-card-header">
+                    <div class="guide-icon">📖</div>
+                    <h3>РАЗВЁРНУТЫЙ ОТЗЫВ</h3>
+                </div>
+                <p>Короткие отзывы вроде «карта удобная» не будут приняты. Опишите, как решалась ваша проблема или как вас консультировали (по телефону, в офисе, в соцсетях).</p>
+            </div>
+
+            <div class="guide-card">
+                <div class="guide-card-header">
+                    <div class="guide-icon">📸</div>
+                    <h3>ДОКАЗАТЕЛЬСТВА</h3>
+                </div>
+                <p>Если в тексте нет подтверждений, приложите скриншоты (переписка с поддержкой, SMS). Скройте конфиденциальную информацию.</p>
+            </div>
+
+            <div class="guide-card">
+                <div class="guide-card-header">
+                    <div class="guide-icon">📄</div>
+                    <h3>ФОТО ДОГОВОРА</h3>
+                </div>
+                <p>Модераторы могут запросить фото первой и последней страниц договора банковского обслуживания. Скройте конфиденциальные данные.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Examples -->
+    <section class="section examples">
+        <h2 class="section-title">ПРИМЕРЫ ЗАЧТЁННЫХ ОТЗЫВОВ</h2>
+        <p class="section-subtitle">Реальные отзывы, которые получили бонусы</p>
+
+        <div class="examples-grid">
+            <div class="example-card">
+                <span class="example-tag">Обращение в офис</span>
+                <div class="example-meta">📍 Москва • 24 июля 2024</div>
+                <p>Давно пользуюсь Ноосфера Банком. Зашёл в отделение с вопросом по ставкам вклада. Сотрудник Дмитрий подробно всё рассказал, помог оформить вклад на выгодных условиях. Офис просторный, очередь электронная, обслуживание быстрое.</p>
+                <a href="#" class="example-link">Читать далее →</a>
+            </div>
+
+            <div class="example-card">
+                <span class="example-tag">Обращение в чат</span>
+                <div class="example-meta">📍 Санкт-Петербург • 30 июля 2024</div>
+                <p>Пришло подозрительное сообщение в Telegram якобы от банка. Написал в чат для проверки. Банк быстро подтвердил, что это мошенники. Спасибо за оперативность и заботу о клиентах!</p>
+                <a href="#" class="example-link">Читать далее →</a>
+            </div>
+
+            <div class="example-card">
+                <span class="example-tag">Автокредитование</span>
+                <div class="example-meta">📍 Краснодар • 2 августа 2024</div>
+                <p>Оформил автокредит на Chery Tiggo 7. Прозрачные условия рассрочки на 3 года, минимальная переплата. Менеджер всё подробно объяснил, процесс занял один визит. Рекомендую!</p>
+                <a href="#" class="example-link">Читать далее →</a>
+            </div>
+
+            <div class="example-card">
+                <span class="example-tag">Ипотечное кредитование</span>
+                <div class="example-meta">📍 Екатеринбург • 24 августа 2024</div>
+                <p>Хочу поблагодарить менеджера Ирину за профессиональное сопровождение ипотечной сделки. Всё было прозрачно и честно, даже когда сделка не состоялась не по вине банка. Спасибо за честность!</p>
+                <a href="#" class="example-link">Читать далее →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq">
+        <h2 class="section-title">ВОПРОСЫ И ОТВЕТЫ</h2>
+
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-question">Когда приходят баллы?</div>
+                <div class="faq-answer">
+                    <p>Если отзыв одобрен модераторами Банки.ру, баллы начисляются до конца следующего месяца. Например: условия выполнены в апреле 2024 — баллы поступят до конца мая 2024. Баллы предоставляются в виде промокода.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Где увидеть промокод?</div>
+                <div class="faq-answer">
+                    <p>Промокод придёт в личном кабинете Ноосфера Банка или на указанную электронную почту. Проверьте раздел «Бонусы» в мобильном приложении.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Как понять, что отзыв одобрен?</div>
+                <div class="faq-answer">
+                    <p>Иконка рейтинга станет зелёной, и над отзывом появится надпись «Отзыв проверен». Обычно проверка занимает 2 недели, но может длиться до 30+ дней.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Что делать, если деньги не пришли?</div>
+                <div class="faq-answer">
+                    <p>Убедитесь, что отзыв одобрен (зелёная иконка). Если прошло более 30 дней и отзыв одобрен — напишите нам на feedback@noospherabank.ru</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Requirements -->
+    <section class="section requirements">
+        <h2 class="section-title">ТРЕБОВАНИЯ К ОТЗЫВУ НА БАНКИ.РУ</h2>
+        <p class="section-subtitle">Что обязательно должно быть в отзыве</p>
+
+        <div class="requirements-note">
+            📸 Сделайте скриншот этой страницы — он поможет вам при написании отзыва
+        </div>
+
+        <div class="req-grid">
+            <div class="req-item">
+                <div class="req-icon">🎯</div>
+                <h4>Ситуация</h4>
+                <p>Подробно опишите ваш вопрос и канал обращения (горячая линия, чат, отделение)</p>
+            </div>
+
+            <div class="req-item">
+                <div class="req-icon">👤</div>
+                <h4>Обслуживание</h4>
+                <p>Имя сотрудника и как именно он вам помог</p>
+            </div>
+
+            <div class="req-item">
+                <div class="req-icon">⏱️</div>
+                <h4>Время</h4>
+                <p>Скорость решения вопроса, дата и время обращения</p>
+            </div>
+
+            <div class="req-item">
+                <div class="req-icon">📎</div>
+                <h4>Документы</h4>
+                <p>Приложите скриншоты переписки, даты/время звонков, уведомления</p>
+            </div>
+
+            <div class="req-item">
+                <div class="req-icon">✨</div>
+                <h4>Удобство</h4>
+                <p>Опишите качество взаимодействия и успешность решения проблемы</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-badges">
+            <div class="badge">🏆 В народном рейтинге Банки.ру</div>
+        </div>
+        <p>* Баллы предоставляются в виде промокода</p>
+        <p>© 2024–2026, АО «Ноосфера Банк». Все права защищены.</p>
+        <p>Генеральная лицензия Банка России</p>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const isActive = item.classList.contains('active');
+
+                // Close all
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+
+                // Toggle current
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
